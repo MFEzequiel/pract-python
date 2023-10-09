@@ -14,15 +14,16 @@ def _random():
         print(ran)
 
         _int = int(input())
-
+        num_str = str(_int)
+        
         if _int > ran:
             print("El número es mayor")
-            list.append(_int)
+            list.append(num_str)
             print("\nNúmeros ingresados")
             print(list)
         elif _int < ran:
             print("El número es menor")
-            list.append(_int)
+            list.append(num_str)
             print("\nNúmeros ingresados")
             print(list)
         else:
