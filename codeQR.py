@@ -5,10 +5,15 @@ import random
 rand_num = random.randint(1000000000, 9999999999)
 
 # Comvierte el número en una cadena
-num_str = str(rand_num)
+print("Materia, Profesor, Alumno")
+mat = "Practica Profesionalizante"
+prof = "Rocha Facundo"
+alum = input()
+
+data = datos = f" Materia: {mat}\nProfesor: {prof}\nAlumno: {alum}"
 
 # Crear el códgo QR
-img = qrcode.make(num_str)
+img = qrcode.make(data)
 
 # Guardar como img
-img.save("codigo_qr_1.png")
+img.save("data.png")

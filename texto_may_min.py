@@ -1,4 +1,4 @@
-def cal():
+def text_min_may():
     while True:
         print("--------------")
         print("Ingrese una letra")
@@ -21,4 +21,4 @@ def cal():
                 break
 
 
-cal()
+text_min_may()

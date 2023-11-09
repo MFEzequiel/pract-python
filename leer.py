@@ -1,4 +1,6 @@
-import tkinter as tk
+"Hello Word!"
+
+import tkinter as tk;
 from tkinter import ttk
 from tkinter import Menu
 
@@ -9,11 +11,8 @@ def funcion_clik():
     _altura.configure(text='' + altura.get())
 
 
-
-
 def _genero_():
     sel=genero.get()
-    print(sel)
 
     if sel == 1:
         sex.configure(text='Hombre')

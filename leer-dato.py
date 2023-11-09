@@ -1,7 +1,6 @@
 def leer_datos():
 
     print("\nIngrese su edad")
-
     age = int(input())
 
     print("\nGenero")
@@ -9,10 +8,13 @@ def leer_datos():
 
     print("\nAltura")
     alt = float(input())
+    print("\n")
+    print("-------------------")
+    print("-------Datos-------")
+    print("-------------------")
 
-    print(age)
-    print(sex)
-    print(alt)
+
+    return print("--- ",age," ---"), print("--- ",sex," ---"), print("--- ",alt," ---")
 
 
 
@@ -22,8 +24,8 @@ def main():
     while True:
         print("\nElige una opción")
         print("------------------")
-        print("1. \nleer datos de una persona")
-        print("7. \Salir")
+        print("1. leer datos de una persona\n")
+        print("7. Salir")
         num = int(input())
 
         if num == 1:
