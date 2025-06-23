@@ -1,0 +1,13 @@
+.card {
+    display: flex;
+    flex-flow: column wrap;
+    width: 200px;
+    height: auto;
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}

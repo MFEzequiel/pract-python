@@ -1,0 +1,10 @@
+DROP DATABASE IF EXITS py_user;
+
+CREATE DATABASE py_user;
+
+USE py_user;
+
+CREATE TABLE user(
+  id INT NOT NULL PRIMARY KEY,
+  name VARCHAR(60) NOT NULL
+);

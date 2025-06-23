@@ -32,7 +32,6 @@ def product():
     print(iva)
 
 
-
 def datos():
     print("\n----------------")
     print("Ingrese sus datos")
@@ -88,7 +87,6 @@ def number():
         print("\n",f"Son pares {n1, n2}")
 
 
-
 def par_impar():
     print("\nIngrese un número")
     n1 = int(input())
@@ -124,7 +122,6 @@ def age():
         print("Estas en la edad de 18-30")
     else:
         print("No estas en la edad de 18-30")
-
 
 
 def menu():
@@ -195,7 +192,6 @@ def main():
             menu()
         elif n =="0":
             break
-
 
 
 if __name__ == "__main__":

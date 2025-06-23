@@ -21,29 +21,11 @@ pantalla = Entry(root,
 pantalla.grid(row=0, padx=2, pady=2, columnspan=4)
 
 # Añadir los botones de la calculadora de Tkinter
-boton_1 = Button(root,text="1",
-				width=9,
-				height=3,
-				bg="white",
-				fg="red",
-				borderwidth=0,
-				cursor="hand2").grid(row=1, column=0, padx=1, pady=1)
+boton_1 = Button(root,text="1",width=9,height=3,bg="white",fg="red",borderwidth=0,cursor="hand2").grid(row=1, column=0, padx=1, pady=1)
 
-boton_2 = Button(root,text="2",
-				width=9,
-				height=3,
-				bg="white",
-				fg="red",
-				borderwidth=0,
-				cursor="hand2").grid(row=1, column=1, padx=1, pady=1)
+boton_2 = Button(root,text="2",width=9,height=3,bg="white",fg="red",borderwidth=0,cursor="hand2").grid(row=1, column=1, padx=1, pady=1)
 
-boton_3 = Button(root,text="3",
-				width=9,
-				height=3,
-				bg="white",
-				fg="red",
-				borderwidth=0,
-				cursor="hand2").grid(row=1, column=2, padx=1, pady=1)
+boton_3 = Button(root,text="3",width=9,height=3,bg="white",fg="red",borderwidth=0,cursor="hand2").grid(row=1, column=2, padx=1, pady=1)
 
 boton_4 = Button(root,text="4",
 				width=9,
@@ -126,21 +108,9 @@ boton_menos = Button(root,text="-",
 				borderwidth=0,
 				cursor="hand2").grid(row=2, column=3, padx=1, pady=1)
 
-boton_multiplicacion = Button(root,text="*",
-				width=9,
-				height=3,
-				bg="deep sky blue",
-				fg="black",
-				borderwidth=0,
-				cursor="hand2").grid(row=3, column=3, padx=1, pady=1)
+boton_multiplicacion = Button(root,text="*",width=9,height=3,bg="deep sky blue",fg="black",borderwidth=0,cursor="hand2").grid(row=3, column=3, padx=1, pady=1)
 
-boton_division = Button(root,text="/",
-				width=9,
-				height=3,
-				bg="deep sky blue",
-				fg="black",
-				borderwidth=0,
-				cursor="hand2").grid(row=4, column=3, padx=1, pady=1)
+boton_division = Button(root,text="/",width=9,height=3,bg="deep sky blue",fg="black",borderwidth=0,cursor="hand2").grid(row=4, column=3, padx=1, pady=1)
 
 # Inicialización de la root
-mainloop()
+root.mainloop()

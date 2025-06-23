@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 100%;
+  min-height: 100vh;
+}
+
+button {
+  padding: 6px;
+  background-color: transparent;
+  border: none;
+  outline: 1px solid var(--blue1);
+  color: var(--color-text);
+}
+
+button:focus {
+  outline: 2px solid var(--blue);
+  color: var(--blue);
+}
+
+button:hover {
+  cursor: pointer;
+  color: var(--blue1);
+  outline: 1px solid var(--blue);
+}
+
+input {
+  padding: 6px;
+  border: 1px solid var(--blue1);
+}
+
+input:focus {
+  outline: 1px solid var(--blue);
+  color: var(--blue);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+p {
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+hr {
+  min-width: 100vw;
+}
+
+li {
+  width: 100%;
+  color: var(--color-text);
+}

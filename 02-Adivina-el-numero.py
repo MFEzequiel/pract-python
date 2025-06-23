@@ -8,24 +8,24 @@ def _random():
 
     x = 1
     ran = randrange(randint(x,10))
-    list = []
 
     while True:
         print(ran)
 
         _int = int(input())
         num_str = str(_int)
+        mylist = []
 
         if _int > ran:
             print("El número es mayor")
-            list.append(num_str)
+            mylist.append(num_str)
             print("\nNúmeros ingresados")
-            print(list)
+            print(mylist)
         elif _int < ran:
             print("El número es menor")
-            list.append(num_str)
+            mylist.append(num_str)
             print("\nNúmeros ingresados")
-            print(list)
+            print(mylist)
         else:
             print("Ganaste")
             break

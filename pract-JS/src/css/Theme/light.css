@@ -1,0 +1,6 @@
+:root[data-theme='light'] {
+    --color-text: #222;
+    --body: #fff;
+    background-color: var(--body);
+    color: var(--color-text);
+}

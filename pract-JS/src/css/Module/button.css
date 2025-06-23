@@ -1,0 +1,10 @@
+.bt, .theme, .card-button {
+  border-radius: 4px;
+  width: 80px;
+  overflow: hidden;
+  border-bottom: 2px solid var(--blue1);
+}
+
+.card-button {
+  margin: auto;
+}

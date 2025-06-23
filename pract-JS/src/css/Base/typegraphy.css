@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'Z3';
+  src: url('../../font/04_Montserrat-Italic.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Z3';
+  src: url('../../font/05_Montserrat-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Z3';
+  src: url('../../font/06_Montserrat-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Z3';
+  src: url('../../font/07_Montserrat-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Z3';
+}
+
+.title, h1{
+  font-family: 'Z3';
+  font-weight: 700;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: 'Z3';
+  font-weight: 600;
+}
+
+p, ul, li {
+  font-family: 'Z3';
+  font-weight: 400;
+}
+
+a, button, input {
+  font-family: 'Z3';
+  font-weight: 500;
+}
