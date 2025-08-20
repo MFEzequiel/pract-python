@@ -12,8 +12,6 @@ db = mysql.connector.connect(
 
 mycursor = db.cursor()
 
-
-
 def show_data():
   sql = 'SELECT id, name FROM user'
   mycursor.execute(sql)

@@ -10,9 +10,5 @@ def cal():
 root = tk.Tk()
 root.title("App")
 
-
-
-
-
 # Inicializar la root
 root.mainloop()

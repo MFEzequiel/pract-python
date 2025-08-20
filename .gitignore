@@ -2,3 +2,8 @@
 .png
 .gif
 .jpg
+# folder
+__pycache__
+folderDB
+# data base
+.db
