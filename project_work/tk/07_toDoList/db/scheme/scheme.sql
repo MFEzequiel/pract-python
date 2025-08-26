@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS user(
+  id INTEGER PRIMARY KEY,
+  name VARCHAR(60) NOT NULL UNIQUE,
+  password BINARY(16) VARCHAR(255) NOT NULL,
+)
+
+INSERT INTO user (id, name, password) VALUES (?, ?, ?)

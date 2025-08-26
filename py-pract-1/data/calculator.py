@@ -125,7 +125,5 @@ bt_0.grid(column=0, row=6, columnspan=2, sticky=(tk.W, tk.E))
 bt_raiz.grid(column=3, row=7)
 bt_ecual.grid(column=0, row=7, columnspan=3, sticky=(tk.W, tk.E))
 
-
-
 # Activar ventana
 root.mainloop()

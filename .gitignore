@@ -2,8 +2,15 @@
 .png
 .gif
 .jpg
-# folder
+# folders and files
 __pycache__
 folderDB
+.vscode
+dist
+build
+localpycs
+.exe
+.env
+.spec
 # data base
 .db
