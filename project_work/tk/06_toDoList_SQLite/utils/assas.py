@@ -1,0 +1,1 @@
+# Componentes GUI: tabla, login, singup

@@ -6,11 +6,13 @@
 __pycache__
 folderDB
 .vscode
+vscode
 dist
 build
 localpycs
 .exe
 .env
 .spec
+.pytest_cache
 # data base
 .db
