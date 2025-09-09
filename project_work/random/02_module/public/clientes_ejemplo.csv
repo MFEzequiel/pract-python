@@ -1,0 +1,5 @@
+name,telefon,email,edad,fecha_ingreso,activo
+Juan Pérez,5551234,juan@mail.com,28.0,2023-04-01,True
+Marta López,5559876,marta@mail.com,34.0,2022-11-15,False
+Luis García,,luis@mail.com,,,True
+Ana Torres,5554321,ana@mail.com,41.0,2021-06-20,True

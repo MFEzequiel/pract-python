@@ -1,0 +1,99 @@
+✅ Requerimientos funcionales
+
+Los requerimientos funcionales describen lo que el sistema debe hacer (lo observable por el usuario).
+
+🧩 1. Gestión de usuario
+
+ El sistema debe permitir el registro de nuevos usuarios.
+
+ El sistema debe autenticar usuarios existentes con su contraseña.
+
+ Cada usuario debe tener acceso solo a sus propias bases de datos.
+
+🗂️ 2. Navegación de bases de datos
+
+ El sistema debe permitir cargar una o varias bases de datos SQLite existentes.
+
+ Debe mostrar las bases de datos en un árbol con sus respectivas tablas.
+
+ Al seleccionar una tabla, debe mostrarse su contenido en un panel.
+
+📤 3. Exportación de datos
+
+ El usuario debe poder exportar los datos de una tabla a un archivo Excel (.xlsx).
+
+ El usuario debe poder exportar los datos de una tabla o consulta a PDF.
+
+📥 4. Importación de datos
+
+ El usuario debe poder importar un archivo Excel (.xlsx) para crear una tabla en una base de datos SQLite.
+
+ La app debe validar que los datos importados tengan estructura válida.
+
+💾 5. Guardado y backups
+
+ El sistema debe crear copias de seguridad automáticas de las bases de datos antes de cerrar.
+
+ El usuario puede configurar la ubicación de los backups o si desea realizarlos manualmente.
+
+📛 6. Manejo de errores y cierre
+
+ Si el usuario cierra la ventana con la "X", el sistema debe advertir si hay cambios sin guardar.
+
+ El sistema debe manejar errores de conexión, corrupción de archivos y mostrar mensajes amigables.
+
+🛠️ Requerimientos técnicos
+
+Describen las herramientas y librerías necesarias, y cómo se organiza internamente la app.
+
+💻 Tecnologías base
+
+Python 3.9+
+
+Tkinter para la interfaz gráfica
+
+SQLite como sistema de base de datos embebido
+
+📦 Librerías externas (instalables con pip)
+
+openpyxl → para leer y escribir archivos Excel
+
+fpdf o reportlab → para generar archivos PDF
+
+pandas (opcional) → para manipular tablas y facilitar import/export
+
+pytest (opcional) → para pruebas automatizadas
+
+ttkthemes o ttkbootstrap (opcional) → para mejorar la apariencia visual
+
+📁 Organización de archivos
+
+Ya lo discutimos antes: modularizado en carpetas core/, ui/, db/, utils/, etc.
+
+🔐 Seguridad (mínima)
+
+Las contraseñas deben almacenarse cifradas (hash), no en texto plano (con hashlib o bcrypt).
+
+Validaciones básicas de entrada para prevenir inyecciones de SQL.
+
+📄 Ejemplo de requirements.txt
+fpdf==1.7.2
+openpyxl==3.1.2
+pandas==2.2.2
+ttkbootstrap==1.10.1
+
+
+(Agrega aquí solo lo que realmente uses)
+
+🧠 ¿Y los requerimientos no funcionales?
+
+Algunos ejemplos aplicables a tu app:
+
+Tipo	Requisito
+Rendimiento	Carga de DBs y tablas debe ocurrir en menos de 2 segundos.
+Usabilidad	La interfaz debe ser clara y accesible, con instrucciones básicas visibles.
+Portabilidad	Debe correr en Windows, Linux y Mac con Python instalado.
+Escalabilidad	La app debe manejar múltiples bases de datos sin degradación perceptible.
+Mantenibilidad	El código debe estar modularizado por carpetas, con nombres descriptivos.
+
+¿Te gustaría que estos requerimientos se exporten a un documento PDF también (tipo “especificación funcional”)?

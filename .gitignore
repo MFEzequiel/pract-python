@@ -4,7 +4,7 @@
 .jpg
 # folders and files
 __pycache__
-folderDB
+folder_db
 .vscode
 vscode
 dist
@@ -14,5 +14,8 @@ localpycs
 .env
 .spec
 .pytest_cache
+pytest_cache
+backups
+v
 # data base
 .db
