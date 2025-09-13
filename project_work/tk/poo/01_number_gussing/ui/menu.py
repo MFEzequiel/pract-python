@@ -1,8 +1,8 @@
 try:
   from tkinter import Frame, Menu
-  from command import menu
-except ImportError:
-  print('Error al importar las librerias')
+  from core import menu
+except ImportError as e:
+  print('Error al importar las libreria -->', e)
 
 class GNUMenu(Frame):
   def __init__(self, root) -> None:
