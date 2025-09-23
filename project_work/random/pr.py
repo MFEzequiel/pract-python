@@ -1,40 +1,16 @@
-# Intentamos importar el módulo sqlite3, que nos permite trabajar con bases de datos SQLite
 try:
-  import sqlite3 as sql
+  import pyautogui
+  import pywhatkit as kit
+  import time
+  import os
+  from datetime import datetime as datatime
 except ImportError as e:
-  # Si ocurre un error al importar, mostramos un mensaje con el detalle del error
-  print("Error al importar el módulo: ", e)
+  print("Error al importar módulos. Asegúrate de tener instaladas las librerías necesarias: ", e)
 
-# Establecemos una conexión a la base de datos llamada 'database.db'.
-# Si el archivo no existe, SQLite lo crea automáticamente.
-conn = sql.connect('database.db')
+now = datatime.now()
+hora = now.hour
+minuto = now.minute + 1  # un minuto después de la hora actual
 
-# ejecutar comandos SQL en la base de datos
-cr = conn.cursor()
-
-# crear la tabla 'students' si no existe
-cr.execute('''
-  CREATE TABLE IF NOT EXISTS students (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL
-  )
-''')
-
-# consulta para insertar datos
-insert_query = "INSERT INTO students (name) VALUES (?)"
-# datos a insertar
-val = [
-  ('John Doe'),
-  ('Jane Smith'),
-  ('Alice Johnson'),
-  ('Bob Brown'),
-]
-# insertar datos en la tabla 'students'
-cr.execute(insert_query, val)
-
-# guardar los cambios en la base de datos
-conn.commit()  
-# mostrar el número de registros insertados
-print(f"{cr.rowcount} registros insertados.")
-# cerrar la conexión a la base de datos
-conn.close()
+# Sintaxis: kit.sendwhatmsg("número", "mensaje", hora, minuto)
+kit.sendwhatmsg("+543644683871", "Hola, este es un mensaje automático", hora, minuto)
+# Esto abrirá WhatsApp Web en el navegador y enviará el mensaje a las 15:30 (hora local). Necesitas tener sesión iniciada en WhatsApp Web.
