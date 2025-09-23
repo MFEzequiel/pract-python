@@ -14,6 +14,8 @@ class WindowExtra(Frame):
     self.root.title('Adivina el número')
     self.root.minsize('350', '350')
 
+    self.main_ui_window = main_window.UI
+
     self.label_welcome = Label(self.root, text="¡Hola! Bienvenido al juego de adivina el número. Tienes 7 intentos para adivinar el número. ¡Comencemos!", wraplength=200, justify=CENTER)
     self.label_low = Label(self.root, text='Minimo')
     self.label_high = Label(self.root, text='Maximo')
@@ -44,5 +46,5 @@ class WindowExtra(Frame):
     config.low = low
     config.high = high
 
-    main_window.UI.update_text()
+    self.main_ui_window.update_text()
     self.root.destroy()

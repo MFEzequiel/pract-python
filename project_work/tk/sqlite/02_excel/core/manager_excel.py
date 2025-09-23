@@ -32,3 +32,5 @@ class ClienteExporter:
 
     print(f"✅ Archivos exportados:\n- Excel: {self.excel_path}\n- CSV: {self.csv_path}")
 
+  def import_excel(self):
+    pass

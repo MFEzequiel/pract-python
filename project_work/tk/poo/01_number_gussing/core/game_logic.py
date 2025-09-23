@@ -2,7 +2,7 @@ try:
   import random
   from core import config
 except ImportError as e:
-  print('Error al importar las libreria', e)
+  print('Error al importar las libreria -->', e)
 
 class GameLogic():
   def __init__(self) -> None:

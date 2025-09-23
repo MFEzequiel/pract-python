@@ -2,7 +2,7 @@ try:
   from tkinter import Frame, Label, Button, StringVar, Entry, CENTER
   from core import game_logic, config
 except ImportError as e:
-  print('Error al importar las libreria -->'. e)
+  print('Error al importar las libreria -->', e)
 
 class UI(Frame):
   def __init__(self, root) -> None:
@@ -27,6 +27,7 @@ class UI(Frame):
 
     self.bt1.grid(column=1, row=2, columnspan=2)
   
-  @staticmethod
   def update_text(self):
-    self.label_welcome.config(text=f'Tienes 7 oportunidades para adivinar el número entre {config.low} y {config.high}. ¡Comencemos!')
+    self.label_welcome.config(
+      text=f'Tienes 7 oportunidades para adivinar el número entre {config.low} y {config.high}. ¡Comencemos!'
+    )
