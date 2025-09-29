@@ -1,10 +1,10 @@
 try:
   from tkinter import Toplevel, Frame, RIGHT, LEFT, BOTH, Y, ttk, messagebox, filedialog
   import os
-  import sqlite3 as sql3
   from core import config
+  import sqlite3 as sql3
 except ImportError as e:
-  print('Error al importar la libreria ', e)
+  print('Error al importar la librerias -->', e)
 
 class ViewDataBase:
   def __init__(self, root) -> None:
@@ -29,45 +29,41 @@ class ViewDataBase:
 
     # path --> connect
     self.databases = {}
-    messagebox.showinfo(self.databases)
 
     # Load database locale 
     self.laod_local_databases()
 
-  def load_database(self):
-    # load multiples files
-    db_path = filedialog.askopenfilename(
-      initialdir=config.directory,
-      filetypes=[("SQLite files", "*.sqlite *.db")]
-    )
-  
+    if not self.databases:
+      messagebox.showinfo("No se encontraron bases de datos", "No se encontraron bases de datos en la carpeta configurada.")
+
+
   def laod_local_databases(self):
     # Comprovar file is existe
     selected = self.show_db.focus()
     values = self.show_db.item(selected)
 
-    if not config.directory :
-      print('El directorio no existe: ', config.directory) 
-
-    for file in os.listdir(config.directory):
+    if not config.path_directory_db :
+      print('El directorio no existe: ', config.path_directory_db) 
+    
+    for file in os.listdir(config.path_directory_db):
       if file.endswith('.db') or file.endswith('.sqlite'):
-        self.full_path = os.path.join(config.directory, file)
+        self.full_path = os.path.join(config.path_directory_db, file)
         self.db_name = os.path.basename(self.full_path)
         self.is_path = os.path.exists(self.full_path)
 
         # Evitar cargar dos veces la misma base de datos
         if self.full_path in self.databases:
           continue
-          
+        
         # Si es tabla (tiene nombre de tabla y db)
         if len(values) == 2:
-          config.directory
+          config.folder_db
 
         try:
           self.conn = sql3.connect(self.full_path)
-          self.databases[config.directory] = self.conn
+          self.databases[self.full_path] = self.conn
 
-          self.db_node = self.show_db.insert("", "end", text=self.db_name, open=True, values=[config.directory])
+          self.db_node = self.show_db.insert("", "end", text=self.db_name, open=True, values=[self.full_path])
 
           self.cr = self.conn.cursor()
           self.cr.execute('SELECT name FROM sqlite_master WHERE type="table"')
@@ -75,12 +71,20 @@ class ViewDataBase:
 
           for table in self.tables:
             self.table_name = table[0]
-            self.show_db.insert(self.db_node, "end", text=self.table_name, values=[config.directory, self.table_name])
+            self.show_db.insert(self.db_node, "end", text=self.table_name, values=[self.full_path, self.table_name])
         except sql3.Error as e:
           print(f"Error al conectar con la bbase de datos {file} ", e)
           # messagebox.showinfo(f"Error al conectar con la bbase de datos {file} ", e)
 
   def show_select(self, event=None):
+    # Limpiar la vista actual de datos
+    for item in self.data_show_db.get_children():
+        self.data_show_db.delete(item)
+
+    # Limpiar las columnas previas
+    self.data_show_db["columns"] = ()
+    self.data_show_db["show"] = ""
+
     # Obtener la tabla seleccionada
     selected = self.show_db.focus()
     values = self.show_db.item(selected)['values']
@@ -97,17 +101,34 @@ class ViewDataBase:
       print(f"Error: No se pudo encontrar la base de datos {db_path}")
       return
 
-    try:
-      cr = conn.cursor()
-      cr.execute(f"SELECT * FROM {table_name}")
-      rows = cr.fetchall()
+    # Mostrar los datos de la tabla
+    # Obtener nombres de columnas
+    self.cr.execute(f"PRAGMA table_info({table_name})")
+    columns_info = self.cr.fetchall()
+    column_names = [col[1] for col in columns_info]
 
+    self.data_show_db["columns"] = column_names
+    self.data_show_db["show"] = "headings"
+
+    # Configurar encabezados
+    for col in column_names:
+        self.data_show_db.heading(col, text=col)
+        self.data_show_db.column(col, width=100, anchor="center")
+
+    try:
+      self.cr.execute(f"SELECT * FROM {table_name}")
+      self.rows = self.cr.fetchall()
+
+      # Insertar los datos
+      for row in self.rows:
+        self.data_show_db.insert("", "end", values=row)
+          
       # Limpiar la vista actual de datos
       for item in self.data_show_db.get_children():
         self.data_show_db.delete(item)
 
       # Mostrar los datos de la tabla
-      for row in rows:
+      for row in self.rows:
         self.data_show_db.insert("", "end", values=row)
     except sql3.Error as e:
       print(f"Error al consultar la tabla {table_name}: {e}")

@@ -36,7 +36,6 @@ class ViewDataBase:
     if not self.databases:
       messagebox.showinfo("No se encontraron bases de datos", "No se encontraron bases de datos en la carpeta configurada.")
 
-
   def laod_local_databases(self):
     # Comprovar file is existe
     selected = self.show_db.focus()
@@ -44,7 +43,6 @@ class ViewDataBase:
 
     if not config.folder_db :
       print('El directorio no existe: ', config.folder_db) 
-    
     
     for file in os.listdir(config.folder_db):
       if file.endswith('.db') or file.endswith('.sqlite'):

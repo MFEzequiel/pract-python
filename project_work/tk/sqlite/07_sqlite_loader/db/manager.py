@@ -14,11 +14,11 @@ class ManagerDB:
       CREATE TABLE IF NOT EXISTS students (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
-        age INTEGER,
-        email TEXT
+        age INTEGER NOT NULL,
+        email TEXT NOT NULL UNIQUE
       )
     ''')
-    self.conn.commi()
+    self.conn.commit()
   
   def insert_data(self):
     insert_query = '''
@@ -35,13 +35,16 @@ class ManagerDB:
     self.cr.executemany(insert_query, students)
     self.conn.commit()
 
+  def query_insert(self):
+    insert_query = 'INSERT INTO students (name, age, email) VALUES (?, ?, ?)'
+    self.cr.executemany(insert_query)
+
   def show_data(self):
-    rows = self.cr.execute('SELECT name, age, email FROM students').fetchall()
+    rows = self.cr.execute('SELECT id, name, age, email FROM students')
+    rows.fetchall()
     print(rows)
     for row in rows:
       print(row)
-
-    self.conn.commit()
 
   def get_connect(self) -> dict:
     self.dict_conn = {

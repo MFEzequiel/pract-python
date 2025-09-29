@@ -36,27 +36,25 @@ class ViewDataBase:
 
   def load_database(self):
     # load multiples files
-    db_path = filedialog.askopenfilename(
-      initialdir=config.directory,
-      filetypes=[("SQLite files", "*.sqlite *.db")]
-    )
+      
+    pass
   
   def laod_local_databases(self):
     # Comprovar file is existe
     selected = self.show_db.focus()
     values = self.show_db.item(selected)
 
-    if not config.directory :
-      print('El directorio no existe: ', config.directory) 
+    if not config.custom_full_db_path :
+      print('El directorio no existe: ', config.custom_full_db_path) 
 
-    for file in os.listdir(config.directory):
+    for file in os.listdir(config.custom_full_db_path):
       if file.endswith('.db') or file.endswith('.sqlite'):
-        self.full_path = os.path.join(config.directory, file)
-        self.db_name = os.path.basename(self.full_path)
-        self.is_path = os.path.exists(self.full_path)
+        full_path = os.path.join(config.custom_full_db_path, file)
+        db_name = os.path.basename(full_path)
+        is_path = os.path.exists(full_path)
 
         # Evitar cargar dos veces la misma base de datos
-        if self.full_path in self.databases:
+        if full_path in self.databases:
           continue
           
         # Si es tabla (tiene nombre de tabla y db)
@@ -64,10 +62,10 @@ class ViewDataBase:
           config.directory
 
         try:
-          self.conn = sql3.connect(self.full_path)
+          self.conn = sql3.connect(full_path)
           self.databases[config.directory] = self.conn
 
-          self.db_node = self.show_db.insert("", "end", text=self.db_name, open=True, values=[config.directory])
+          self.db_node = self.show_db.insert("", "end", text=db_name, open=True, values=[config.directory])
 
           self.cr = self.conn.cursor()
           self.cr.execute('SELECT name FROM sqlite_master WHERE type="table"')

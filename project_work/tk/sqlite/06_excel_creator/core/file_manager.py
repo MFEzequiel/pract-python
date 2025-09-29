@@ -17,14 +17,14 @@ class ClientExporte:
     # datos de la base de datos a excel
     self.query_select = "SELECT * FROM users"
     self.rows = self.cr.execute(self.query_select).fetchall()
-    self.date_pf = pd.DataFrame(self.rows, columns=['id', 'name', 'age', 'email'])
+    self.date_file = pd.DataFrame(self.rows, columns=['id', 'name', 'age', 'email'])
     
     # Convertir columna de fecha si existe
-    if 'fecha_ingreso' in self.date_pf.columns:
-      self.date_pf['fecha_ingreso'] = pd.to_datetime(self.date_pf['fecha_ingreso'], errors='coerce')
+    if 'fecha_ingreso' in self.date_file.columns:
+      self.date_file['fecha_ingreso'] = pd.to_datetime(self.date_file['fecha_ingreso'], errors='coerce')
     
     # Exportar a Excel  
-    self.date_pf.to_excel(config.full_path_excel, index=False, engine='openpyxl')
+    self.date_file.to_excel(config.full_path_excel, index=False, engine='openpyxl')
     
     # Exportar a CSV
-    self.date_pf.to_csv(config.full_path_excel.replace('.xlsx', '.csv'), index=False)
+    self.date_file.to_csv(config.full_path_excel.replace('.xlsx', '.csv'), index=False)

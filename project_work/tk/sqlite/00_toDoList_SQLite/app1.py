@@ -38,7 +38,9 @@ class SQLiteBrowser:
     self.databases = {}  # ruta -> conexión
 
   def load_database(self):
-    db_path = filedialog.askopenfilename(filetypes=[("SQLite files", "*.sqlite *.db")])
+    db_path = filedialog.askopenfilename(
+       filetypes=[("SQLite files", "*.sqlite *.db")]
+    )
     
     if db_path:
       db_name = os.path.basename(db_path)
