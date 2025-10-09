@@ -14,6 +14,7 @@ localpycs
 .exe
 .env
 .spec
+buildozer
 .pytest_cache
 pytest_cache
 backups
