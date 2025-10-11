@@ -1,30 +1,25 @@
 try:
-  import os
-  from pathlib import Path
+  import os 
+  from pathlib import Path 
 except ImportError as e:
   print('Error al importar el modulo -->', e)
 
 # curren directory
 cwd = os.getcwd()
 #custom directory
-custom_dir = os.path.join(cwd, 'program/00_p')
-
-DIR_DB = os.path.join(custom_dir, 'DataBase')
+custom_dir = os.path.join(cwd, 'program/00_p/')
+# create directories if not exist
+DIR_DB = os.path.join(custom_dir, 'database')
 DIR_BACKUPS = os.path.join(custom_dir, 'backups')
-DIR_EXCEL = os.path.join(custom_dir, 'public/excel_files')
+DIR_EXCEL = os.path.join(custom_dir, 'public/excel')
 DIR_DATA_EXCEL = os.path.join(custom_dir, 'public/data_excel')
 
-if not os.path.exists(DIR_DB):
-  os.makedirs(DIR_DB)
+for directory in [DIR_EXCEL, DIR_DB, DIR_BACKUPS, DIR_DATA_EXCEL]:
+  if not os.path.exists(directory):
+    os.makedirs(directory)
 
-if not os.path.exists(DIR_BACKUPS):
-  os.makedirs(DIR_BACKUPS)
-
-if not os.path.exists(DIR_DATA_EXCEL):
-  os.makedirs(DIR_DATA_EXCEL)
-
-NAME_DB = 'kiosco'
-NAME_EXCEL = 'data_kiosco'
+NAME_DB = 'cars'
+NAME_EXCEL = 'data_cars'
 NAME_DATA_EXCEL = os.listdir(DIR_DATA_EXCEL)
 
 NAME_DB = str(Path(NAME_DB).with_suffix('.db').stem + '.db')
