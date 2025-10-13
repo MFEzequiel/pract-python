@@ -18,6 +18,8 @@ buildozer
 .pytest_cache
 pytest_cache
 backups
+DataBase
+data_base
 v
 # data base
 .db
