@@ -1,10 +1,10 @@
 Como instalar los modulos y librerias para este proyecto
-  
+
   pip install -r requirements.txt
 
-Estructura de Carpetas y Archivos
+  Estructura de Carpetas y Archivos
 
-00_p/
+01_p/
 │
 ├── config.py
 ├── main.py
