@@ -1,6 +1,8 @@
 try:
+  import sys
   import os
   from pathlib import Path
+  import getpass as gp
 except ImportError as e:
   print('Error al importar el módulo -->', e)
 
@@ -9,18 +11,31 @@ CUSTOM_PATH = os.path.join(cwd, 'project_work/tk/sqlite/09_kg')
 
 DIR_DB = os.path.join(CUSTOM_PATH, 'data_base')
 DIR_EXCEL = os.path.join(CUSTOM_PATH, 'public/excel')
-DIR_DB_EXCEL = os.path.join(CUSTOM_PATH, 'public/data_excel_db')
+DIR_DB_EXCEL = os.path.join(CUSTOM_PATH, 'public/data_excel_csv')
 DIR_DB_STUDENTS =  os.path.join(CUSTOM_PATH, 'public/data_students_db')
+DIR_IMAGE = os.path.join(CUSTOM_PATH, 'public/image')
 DIR_TICKETS = os.path.join(CUSTOM_PATH, 'tickets')
-DIR_TICKETS_IMG = os.path.join(DIR_TICKETS, 'archivo_imágenes')
-DIR_TICKETS_PDF = os.path.join(DIR_TICKETS, 'archivo_pdfs')
+DIR_TICKETS_IMG = os.path.join(DIR_TICKETS, 'file_image')
+DIR_TICKETS_PDF = os.path.join(DIR_TICKETS, 'file_pdfs')
 
 def create_directories():
   for directory in [DIR_DB, DIR_EXCEL, DIR_DB_EXCEL, DIR_DB_STUDENTS, DIR_TICKETS,
-    DIR_TICKETS_IMG, DIR_TICKETS_PDF
+    DIR_TICKETS_IMG, DIR_TICKETS_PDF, DIR_IMAGE
   ]:
     if not os.path.exists(directory):
       os.makedirs(directory)
+
+def create_folder():
+  DIR_EN = os.path.join(CUSTOM_PATH, 'Encripado')
+  PASSWORD = 1234
+  if not os.path.exists(DIR_EN):
+    os.makedirs(DIR_EN)
+    try:
+      with open(f"{DIR_EN}/.password", "w") as f:
+        f.write(PASSWORD)
+    except Exception as e:
+      print("Error al crear la carpeta encriptada")
+
 
 db_name = 'kisco'
 name_db_excel = 'kisco'

@@ -13,7 +13,8 @@ class DBManager:
   def connect_db(self) -> dict: 
     dict = {
       "conn" : self.conn,
-      "cursor": self.cr
+      "cursor": self.cr,
+      "sql": sql.Error
     }
   
     return dict

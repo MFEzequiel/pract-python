@@ -15,6 +15,7 @@ class Root:
 
     # Create directories
     config.create_directories()
+    # config.create_folder()
 
     # connection to db and create data base default
     self.db = manager_db.DBManager(config.DIR_FILE_DB)
@@ -22,7 +23,8 @@ class Root:
     cursor = self.db.connect_db['cursor']
 
     # # create tabe for default
-    model_db.DBModel(conn, cursor)
+    self.model = model_db.DBModel()
+
 
     # GUI
     menu.UIMenu(self.root, db_viewer.ViewDataBase)

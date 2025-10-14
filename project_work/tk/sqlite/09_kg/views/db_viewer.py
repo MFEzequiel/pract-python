@@ -83,7 +83,7 @@ class ViewDataBase:
   def show_select(self, event=None):
     # Limpiar la vista actual de datos
     for item in self.data_show_db.get_children():
-        self.data_show_db.delete(item)
+      self.data_show_db.delete(item)
 
     # Limpiar las columnas previas
     self.data_show_db["columns"] = ()
@@ -98,9 +98,9 @@ class ViewDataBase:
 
     db_path = values[0]  # Ruta de la base de datos
     table_name = values[1]  # Nombre de la tabla
-
     # Conectar a la base de datos seleccionada
     conn = self.databases.get(db_path)
+    
     if not conn:
       print(f"Error: No se pudo encontrar la base de datos {db_path}")
       return
@@ -116,8 +116,8 @@ class ViewDataBase:
 
     # Configurar encabezados
     for col in column_names:
-        self.data_show_db.heading(col, text=col)
-        self.data_show_db.column(col, width=100, anchor="center")
+      self.data_show_db.heading(col, text=col)
+      self.data_show_db.column(col, width=100, anchor="center")
 
     try:
       self.cr.execute(f"SELECT * FROM {table_name}")

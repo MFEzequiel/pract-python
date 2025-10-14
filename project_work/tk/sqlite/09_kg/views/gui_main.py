@@ -1,6 +1,5 @@
 try:
   from tkinter import Frame, ttk, Label
-  import config
   from views import sale, client, inventary
 except ImportError as e:
   print('Error al importar el módulo -->', e)
