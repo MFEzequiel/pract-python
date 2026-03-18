@@ -3,6 +3,7 @@ import pygame as pg
 # plantila eney
 class Enemy(pg.sprite.Sprite): # Herencia (Herada sprite de pygame)
   def __init__(self, pos, image):
+    pg.sprite.Sprite.__init__(self)
     self.image = image
     self.rect = self.image.get_rect()
     self.rect.center = pos

@@ -3,6 +3,8 @@ PyWhatKit_DB
 .png
 .gif
 .jpg
+.xlsx
+.pdf
 # folders and files
 __pycache__
 folder_db
