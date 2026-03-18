@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aisitencia</title>
+  <style>
+    body {
+      background-color: #222;
+      color: aliceblue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100dvw;
+      height: 100dvh;
+    }
+    .heaeder {
+      width: 100dvw;
+      height: 70px;
+      display: flex;
+      align-items: center;
+    }
+
+    .header_ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    .container {
+      padding: 40px;
+      border-radius: 8px;
+      width: 1080px;
+      max-width: 420px;
+    }
+
+    .form {
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    input, select {
+      width: 140px;
+      padding: 14px;
+      color: aliceblue;
+      background-color: #0f172a;
+    }
+
+    .form_submit {
+      padding: 10px;
+      background-color: transparent;
+      color: aliceblue;
+      border:  none;
+      outline: none;
+      cursor: pointer;
+      border-bottom: 2px solid green;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <form action="/assistence" method="post" class="form">
+      <label for="username" class="username">
+        Nombre
+      </label>
+      <input type="text" class="input_username" name="username" placeholder="Ezequiel" required>
+  
+      <label for="lastname" class="lastname">
+        Apellido
+      </label>
+      <input type="text" class="input_lastname" name="lastname" placeholder="Ferreyra" required>
+
+      <label for="datetime" class="datetime">
+        Fecha
+      </label>
+      <input type="datetime-local" class="input_datetime" name="datetime" required>
+
+      <select name="course" class="form_curse" required>
+        <option value="">Selecione un curso</option>
+        {% for c in courses %}
+          <option value="{{ c }}">{{ c }}</option>
+        {% endfor %}
+      </select>
+  
+      <button class="form_submit">Enviar</button>
+    </form>
+    
+    <p class="message"></p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const message = document.querySelector(".message");
+  
+    if (params.get("success") === "1") {
+      message.textContent = "✅ Asistencia guardada correctamente";
+      message.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>
