@@ -26,9 +26,9 @@ def create_folder():
       os.makedirs(directory)
   
 file_json = dir_path(dir_json, 'courses.json')
-
-if not os.path.exists(file_json):
-  data = {"body": []}
-  
-  with open(file_json, "w") as f:
+def create_json():
+  if not os.path.exists(file_json):
+    data = {"body": []}
+    
+    with open(file_json, "w") as f:
       json.dump(data, f, indent=4)

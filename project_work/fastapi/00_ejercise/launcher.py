@@ -6,7 +6,7 @@ import network
 import config as cg
 
 cg.create_folder()
-
+cg.create_json()
 # Variable para manejar el servidor
 server_thread = None
 

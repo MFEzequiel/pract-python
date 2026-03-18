@@ -15,7 +15,7 @@ class CreateFiles:
     else:
       wb = openpyxl.Workbook()
       ws = wb.active
-      ws.append(['Nombre', 'Apellido', 'Curso'])
+      ws.append(['Nombre', 'Apellido', 'fecha', 'Curso'])
     
     ws.append(data)
     wb.save(file_path)
