@@ -1,7 +1,7 @@
 try:
   from tkinter import Toplevel, Frame, RIGHT, LEFT, BOTH, Y, ttk, messagebox, filedialog
   import os
-  import sqlite3 as sq3
+  import sqlite3 as sql3
   from core import config
 except ImportError as e:
   print('Error al importar la libreria ', e)
@@ -22,7 +22,7 @@ class ViewDataBase:
     # tree for database and table
     self.show_db = ttk.Treeview(self.sidebar)
     self.show_db.pack(fill=BOTH, expand=True)
-    self.show_db.bind('<<TreeviewSellect>>', self.show_select)
+    self.show_db.bind('<<TreeviewSelect>>', self.show_select)
 
     self.data_show_db = ttk.Treeview(self.main_panel)
     self.data_show_db.pack(fill=BOTH, expand=True)
@@ -36,8 +36,10 @@ class ViewDataBase:
 
   def load_database(self):
     # load multiples files
-    self.db_path = filedialog.askopenfilenames(filetypes=[("SQLite files", "*.db *.sqlite")])
-    pass
+    db_path = filedialog.askopenfilename(
+      initialdir=config.directory,
+      filetypes=[("SQLite files", "*.sqlite *.db")]
+    )
   
   def laod_local_databases(self):
     # Comprovar file is existe
@@ -52,6 +54,7 @@ class ViewDataBase:
         self.full_path = os.path.join(config.directory, file)
         self.db_name = os.path.basename(self.full_path)
         self.is_path = os.path.exists(self.full_path)
+
         # Evitar cargar dos veces la misma base de datos
         if self.full_path in self.databases:
           continue
@@ -61,7 +64,7 @@ class ViewDataBase:
           config.directory
 
         try:
-          self.conn = sq3.connect(self.full_path)
+          self.conn = sql3.connect(self.full_path)
           self.databases[config.directory] = self.conn
 
           self.db_node = self.show_db.insert("", "end", text=self.db_name, open=True, values=[config.directory])
@@ -73,9 +76,38 @@ class ViewDataBase:
           for table in self.tables:
             self.table_name = table[0]
             self.show_db.insert(self.db_node, "end", text=self.table_name, values=[config.directory, self.table_name])
-        except sq3.Error as e:
+        except sql3.Error as e:
           print(f"Error al conectar con la bbase de datos {file} ", e)
           # messagebox.showinfo(f"Error al conectar con la bbase de datos {file} ", e)
 
-  def show_select(self, event):
-    pass
+  def show_select(self, event=None):
+    # Obtener la tabla seleccionada
+    selected = self.show_db.focus()
+    values = self.show_db.item(selected)['values']
+    
+    if len(values) < 2:  # Verifica que haya una base de datos y una tabla seleccionada
+      return
+
+    db_path = values[0]  # Ruta de la base de datos
+    table_name = values[1]  # Nombre de la tabla
+
+    # Conectar a la base de datos seleccionada
+    conn = self.databases.get(db_path)
+    if not conn:
+      print(f"Error: No se pudo encontrar la base de datos {db_path}")
+      return
+
+    try:
+      cr = conn.cursor()
+      cr.execute(f"SELECT * FROM {table_name}")
+      rows = cr.fetchall()
+
+      # Limpiar la vista actual de datos
+      for item in self.data_show_db.get_children():
+        self.data_show_db.delete(item)
+
+      # Mostrar los datos de la tabla
+      for row in rows:
+        self.data_show_db.insert("", "end", values=row)
+    except sql3.Error as e:
+      print(f"Error al consultar la tabla {table_name}: {e}")

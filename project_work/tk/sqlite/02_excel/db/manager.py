@@ -17,3 +17,10 @@ class FactoryDB:
 
     # create table and file .db or .sqlite
     models.Model.create_table(self.conn, self.cr)
+
+  def get_connection(self) -> dict:
+    self.dic_connection = {
+      "conn": self.conn,
+      "cr": self.cr
+    }
+    return self.dic_connection

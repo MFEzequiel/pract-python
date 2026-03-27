@@ -1,7 +1,10 @@
 # images
+PyWhatKit_DB
 .png
 .gif
 .jpg
+.xlsx
+.pdf
 # folders and files
 __pycache__
 folder_db
@@ -13,9 +16,12 @@ localpycs
 .exe
 .env
 .spec
+buildozer
 .pytest_cache
 pytest_cache
 backups
+DataBase
+data_base
 v
 # data base
 .db
